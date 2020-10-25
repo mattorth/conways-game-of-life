@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #5CDB95;
+  width: 95%;
+  margin: 0 auto;
 }
 
 code {
@@ -12,9 +15,13 @@ code {
     monospace;
 }
 
+ul {
+  text-align: left;
+}
+
 .cell {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border: 2px solid gray
 }
 
@@ -29,4 +36,25 @@ code {
 
 .dead {
   background-color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rules {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  align-items: flex-start;
+}
+
+.options {
+  margin-top: 30px;
+  width: 300px;
+}
+
+.grid {
+  margin: 30px auto;
 }

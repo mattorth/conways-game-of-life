@@ -1,5 +1,4 @@
-import { TOGGLE_ALIVE } from '../Actions/index';
-import data from '../data';
+import { TOGGLE_ALIVE, NEXT_GEN, TOGGLE_TRUE, TOGGLE_FALSE, CLEAR_GRID } from '../Actions/index';
 
 let grid = [];
 
@@ -23,8 +22,6 @@ for(let x =0; x < size.one; x++) {
 
 const initialState = {
     currentGrid: grid,
-    previousGrid: grid,
-    generation: 0
 }
 
 function reducer(state = initialState, action) {
@@ -41,10 +38,40 @@ function reducer(state = initialState, action) {
                     )
                 )
             }
-        // case NEXT_GEN:
-        //     return {
-
-        //     }
+        case TOGGLE_TRUE:
+            return {
+                ...state,
+                nextGrid: state.currentGrid.map(row =>
+                    row.map(cell => (
+                        (cell.id === action.payload.id)
+                        ? {...cell, isAlive: true}
+                        : cell
+                        )
+                    )
+                )
+            }
+        case TOGGLE_FALSE:
+            return {
+                ...state,
+                nextGrid: state.currentGrid.map(row =>
+                    row.map(cell => (
+                        (cell.id === action.payload.id)
+                        ? {...cell, isAlive: false}
+                        : cell
+                        )
+                    )
+                )
+            }
+        case NEXT_GEN:
+            return {
+                ...state,
+                currentGrid: action.payload
+            }
+        case CLEAR_GRID:
+            return {
+                ...state,
+                currentGrid: action.payload
+            }
 
         default:
             return state;
